@@ -272,7 +272,7 @@ The analysis of the best performing model revealed that age was the most influen
 
 ### 5. [Clustering](./code/05_Clustering.ipynb)
 
-KMeans, DBScan, KModes, and KPrototyes clustering algorithms were used as tools to group and further analyze people classified as impoverished within the dataset. Several relevant features based on the results of the Exploratory Data Analysis were chosen as candidates. Data was split into numerical and categorical sets and preprocessed appropriately. KMeans with 9 clusters was trained on the numerical features. The two groups with the most data were split markedly by age.
+KMeans, DBScan, KModes, and KPrototypes clustering algorithms were used as tools to group and further analyze people classified as impoverished within the dataset. Several relevant features based on the results of the Exploratory Data Analysis were chosen as candidates. Data was split into numerical and categorical sets and preprocessed appropriately. KMeans with 9 clusters was trained on the numerical features. The two groups with the most data were split markedly by age.
 
 **Distributions of Select KMeans Clusters**
 
