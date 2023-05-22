@@ -192,8 +192,7 @@ are assigned for interview each month; about 50,000 of them containing approxima
 
 ### 3. [Logistic Regression Modeling](./code/02_Classification_Modeling_Logistic_Regression.ipynb)
 
-Logistic regression was used to predict poverty status based on features such as race, sex, highest education level achieved, and tax filing status. The features that were relevant were selected from the dataset then contingency tables and chi square tests were used to determine which variables were associated with poverty status. The categorical variables were one hot encoded. A train test split was performed and the data was scaled. A basiclogistic regression was performed initially. A logistic regressio with a pipeline and a gew added parameters was performed. A logistic regression pipeline with grid search and additional parameters was performed.
-The model was evaluated using metrics such as balanced accuracy and f1 score.
+Logistic regression was used to predict poverty status based on features such as race, sex, highest education level achieved, and tax filing status. The features that were relevant were selected from the dataset then contingency tables and chi square tests were used to determine which variables were associated with poverty status. The categorical variables were one hot encoded. A train test split was performed and the data was scaled. A basic logistic regression was performed initially. A logistic regression with a pipeline and a few added parameters was performed. The model was evaluated using metrics such as balanced accuracy and f1 score.
 
 ![cmlogr](./images/classification_models/lr2_cm.png)
 
