@@ -8,7 +8,6 @@
 - [Data Description](#data_used)
 - [Data Dictionary](#data_d)
 - [Methodology](#methodology)
-- [Metrics Summary](#metrics)
 - [Conclusions & Recommendations](#conclusion)
 - [Next Steps](#next_steps)
 - [Sources](#sources)
@@ -32,6 +31,7 @@
 │   ├── clustering
 │   └── eda
 ├── presentation
+│   └── Group 4 Presentation.pdf
 ├── LICENSE
 └── README.md
 
@@ -41,7 +41,7 @@
 ## Problem Statement<a id='problem_state'></a>
 ---
 
-This project aims to develop strategies for reducing economic disparities in the United States by using data analysis on The Current Population Survey (CPS) to identify groups of people who are at risk of poverty or financial struggles. We will use clustering (KMeans, DBScan, KModes) and inferential classification techniques (Logistic Regression, Random Forest Classifier, Gradient Boosting Classifier) to group people based on their education, healthcare access, and other factors in order to determine how these specific factors influence Supplemental Poverty Measure (SPM) poverty likelihood. The impact of the most noteworthy features will be analyzed. The effectiveness of our classification models will be evaluated on balanced accuracy and F1 score. The insights we gain will help non-profits, policymakers, and government agencies develop targeted interventions and policies to promote economic equity and help those who need it most.
+This project aims to develop strategies for reducing economic disparities in the United States by using data analysis on The Current Population Survey (CPS) to identify groups of people who are at risk of poverty or financial struggles. We will use clustering (KMeans, DBScan, KModes, KPrototypes) and inferential classification techniques (Logistic Regression, Random Forest Classifier, Gradient Boosting Classifier) to group people based on their education, healthcare access, and other factors in order to determine how these specific factors influence Supplemental Poverty Measure (SPM) poverty likelihood. The impact of the most noteworthy features will be analyzed. The effectiveness of our classification models will be evaluated on balanced accuracy and F1 score. The insights we gain will help non-profits, policymakers, and government agencies develop targeted interventions and policies to promote economic equity and help those who need it most.
 
 ### Background Research
 
@@ -75,7 +75,7 @@ Poverty rate declines were widespread among demographic groups, ostensibly due t
 
 ---
 
-[`pppub22.csv`](../data/pppub22.csv): Current Population Survey, 2022 Annual Social and Economic (ASEC) Supplement conducted by the Bureau of the Census for the Bureau of Labor Statistics. Dataset contains 152,732 observations and 832 features.<sup>1</sup>
+[`pppub22.csv`](./data/pppub22.csv): Current Population Survey, 2022 Annual Social and Economic (ASEC) Supplement conducted by the Bureau of the Census for the Bureau of Labor Statistics. Dataset contains 152,732 observations and 832 features.<sup>1</sup>
 
 > * The universe is the civilian noninstitutional population of the United States living in housing units and members of the Armed Forces living off post or living with their families on post, as long as at least one civilian adult lives in the same household. 
 > * The sample is located in approximately 826 sample areas comprising 1,328 counties and independent cities with coverage in every State and in the District of Columbia. In all, some 70,000 housing units or other living quarters
@@ -85,7 +85,7 @@ are assigned for interview each month; about 50,000 of them containing approxima
 
 ---
 
-[Cleaned Dataset](../data/clean_data/cleaned_data.csv) contains 152,732 observations and 52 features.
+[Cleaned Dataset](./data/clean_data/cleaned_data.csv) contains 152,732 observations and 52 features.
 
 | Variable Name | Description | Units | Type | Notes (Original names) |
 | --- | --- | --- | --- | --- |
@@ -143,7 +143,7 @@ are assigned for interview each month; about 50,000 of them containing approxima
 | `POV_LVL` | poverty level of persons (subfamily members have primary family recode) | text | string | PERLIS |
 
 
-## Methodology
+## Methodology<a id='methodology'></a>
 
 ---
 
@@ -243,11 +243,11 @@ Moreover, regarding the model selection, based on the confusion matrix above, th
 
 ### 4. [Random Forest Modeling](./code/04_Classification_Modeling_Random_Forest.ipynb)
 
-In this notebook, two models were used: a Random Forest model and a Random Forest model with resampling. First, data was prepared by getting rid of unnecessary information and splitting it into training and test sets. Random Forest model was trained on the training data and was evaluated on how well it made predictions on the test data. Metrics like accuracy and F1 score were used to see how accurate the model was. A confusion matrix was made to get a visual representation of the predictions.
+In this notebook, two models were used: a Random Forest model and a Random Forest model with resampling. The data was prepared by removing unnecessary information and splitting it into training and test sets. The Random Forest model was trained on the training data, and its performance was evaluated by making predictions on the test data. Metrics such as accuracy and F1 score were utilized to assess the model's accuracy, and a confusion matrix was created to visualize the predictions.
 
-The Random Forest model was chosen because it's good at dealing with complicated data that has many different factors. It can handle outliers well and can find patterns that are not just straight lines. It also tells us which factors are important in making predictions. To deal with imbalanced data, where some categories have more data than others, a Random Forest model with resampling was used. More examples from the minority categories were added to make sure all categories had enough data. The best settings for the model were chosen and its performance was evaluated using accuracy and F1 score. Another confusion matrix was made to see how well the resampled model did.
+The Random Forest model was chosen due to its ability to handle complex data with multiple factors, handle outliers effectively, and discover non-linear patterns. It also provides insights into the important factors that contribute to predictions. To address imbalanced data, where certain categories have more data than others, the Random Forest model with resampling was employed. Additional examples from the minority categories were added to ensure sufficient data representation. Optimal model settings were determined, and the model's performance was evaluated using accuracy and F1 score. Another confusion matrix was generated to evaluate the resampled model's performance.
 
-By comparing the results of both models, it became evident how resampling can make a difference when dealing with imbalanced data. Lastly, the factors that were most important in the Random Forest model were looked at to understand what influenced the predictions the most. Overall, the notebook provides a step-by-step approach to classification modeling, dealing with imbalanced data, and evaluating the model's performance.
+By comparing the results of both models, insights were gained into the impact of resampling when dealing with imbalanced data. The analysis of important factors in the Random Forest model provided a better understanding of the factors that significantly influence predictions. Overall, the notebook presented a systematic approach to classification modeling, addressing imbalanced data, and evaluating model performance.
 
 
 ![cmrf](./images/classification_models/rf_confusion_matrix_w_resample.png)
@@ -256,12 +256,7 @@ By comparing the results of both models, it became evident how resampling can ma
 
 The analysis of the best performing model revealed that age was the most influential feature in predicting poverty. This finding aligns with our understanding that younger individuals who may not have established financial stability are more susceptible to poverty. Furthermore, older individuals facing increased financial burdens due to healthcare and other factors also face a higher risk of poverty. Adjusted Gross Income and Out-of-Pocket Outpatient Care were identified as the next significant features contributing to the model's predictive power. These findings emphasize the importance of considering age and financial factors, such as income and healthcare expenses, when addressing poverty-related issues.
 
-
-### 5. [Clustering](./code/05_Clustering.ipynb)
-
-Coming Soon.
-
-## Metrics Summary<a id='metrics'></a>
+### Metrics Summary
 
 | Model | Balanced Accuracy | F-1 Score |
 |-------|------------------|-----------|
@@ -273,6 +268,34 @@ Coming Soon.
 | GBM W/ Data Resampling (with only columns selected at EDA process) | 0.787 | 0.325 |
 |Random Forest| 0.765|0.613|
 |Random Forest w/ Resampling|0.815|0.631
+
+
+### 5. [Clustering](./code/05_Clustering.ipynb)
+
+KMeans, DBScan, KModes, and KPrototyes clustering algorithms were used as tools to group and further analyze people classified as impoverished within the dataset. Several relevant features based on the results of the Exploratory Data Analysis were chosen as candidates. Data was split into numerical and categorical sets and preprocessed appropriately. KMeans with 9 clusters was trained on the numerical features. The two groups with the most data were split markedly by age.
+
+**Distributions of Select KMeans Clusters**
+
+![cluster](./images/clustering/kmeans_pairplot_1_2.png)
+
+KModes with 8 clusters was trained on the categorical features. Features such as employment status, citizenship, disability, family relationship type, and type of insurance coverage seemed to noticeably split the data. A further analysis of disabled individuals in poverty was subsequently conducted. 
+
+Some of the findings were:
+
+* 19% of people with poverty in this dataset have a debilitating disability.
+* About 8% of these people are employed.
+* Over 98% of people in poverty with disabilities that affect ability to work didn't receive disability income.
+* About half of these individuals live in locations in which they are not considered family.
+* Majority have year-round public insurance coverage.
+
+Lastly, KPrototypes was trained on the numerical and categorical data with 7 clusters. 
+
+![cluster2](./images/clustering/KPrototypes_cluster.png)
+
+Clusters were split on a number of features such as sex, family relationship type, marital status, age, and earnings. KPrototypes clusters were much more imbalanced than those porduced by KModes. This is most likely due to the extra dimensionality created by clustering on both numerical and categorical data.
+
+In this analysis, KMeans, KModes and KPrototypes highlighted different features of the minority classes in the dataset such as disability status, citizenship, medical expenses, and education levels. KMeans helped showcase some differences between various age groups. KModes clustering aided in the examination of the conditions of disabled individuals in poverty. KPrototypes, for example, could spur an additional study on qualities of impoverished people with esteemed educational backgrounds. In general, the number and type of features used in a clustering algorithm affect the optimal number of clusters and the main characteristics of the data in those clusters. Additionally, the type of clustering model can greatly shape how the data is ultimately arranged. It's apparent in both the analysis of KMeans and KPrototypes clustering that extreme income and earning values created smaller, less useful clusters. Domain expertise seems to be paramount in order to properly group data for the most fruitful analysis.
+
 
 ## Conclusions & Recommendations<a id='conclusion'></a>
 
