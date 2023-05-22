@@ -147,12 +147,12 @@ are assigned for interview each month; about 50,000 of them containing approxima
 
 ---
 
-### 1. [Data Cleaning](../code/01_Data_Cleaning_and_EDA.ipynb)
+### 1. [Data Cleaning](./code/01_Data_Cleaning_and_EDA.ipynb)
 
 > * Observations were examined to ensure all values were relevant and not null.
 > * Variable names and values were renamed and decoded respectively to allow for easier interpretation. 
 
-### 2. [Exploratory Data Analysis](../code/01_Data_Cleaning_and_EDA.ipynb)
+### 2. [Exploratory Data Analysis](./code/01_Data_Cleaning_and_EDA.ipynb)
 
 >* Numerical features were analyzed with various techniques. 
 
@@ -169,7 +169,7 @@ are assigned for interview each month; about 50,000 of them containing approxima
 | **CHLD_SUP**           | 152732.0  | 54.54437838828798   | 947.8959519035913  | 0.0       | 0.0     | 0.0     | 0.0      | 99000.0   |
 | **ADJ_GROSS_INC**      | 152732.0  | 37421.90889924836   | 88896.73025504974  | -141217.0 | 0.0     | 0.0     | 43497.75 | 3240777.0 |
 
-![Correlation](../images/eda/correlation_heatmap.png)
+![Correlation](./images/eda/correlation_heatmap.png)
 
 >* Categorical features were examined with contingency tables and visualizations.
 
@@ -190,7 +190,7 @@ are assigned for interview each month; about 50,000 of them containing approxima
 
 ![Sex](./images/eda/Distribution_of_Sex_by_Poverty_Level_distribution.png)
 
-### 3. [Logistic Regression Modeling](../code/02_Classification_Modeling_Logistic_Regression.ipynb)
+### 3. [Logistic Regression Modeling](./code/02_Classification_Modeling_Logistic_Regression.ipynb)
 
 Logistic regression was used to predict poverty status based on features such as race, sex, highest education level achieved, and tax filing status. The features that were relevant were selected from the dataset then contingency tables and chi square tests were used to determine which variables were associated with poverty status. The categorical variables were one hot encoded. A train test split was performed and the data was scaled. A basiclogistic regression was performed initially. A logistic regressio with a pipeline and a gew added parameters was performed. A logistic regression pipeline with grid search and additional parameters was performed.
 The model was evaluated using metrics such as balanced accuracy and f1 score.
@@ -207,7 +207,7 @@ Those whose highest level of education achieved is high school have the highest 
 
 People with no private insurance coverage have the highest coefficients out of all of the health insurance coverage features.
 
-### 4. [Gradient Boosting Modeling](../code/03_Classification_Modeling_Gradient_Boosting.ipynb)
+### 4. [Gradient Boosting Modeling](./code/03_Classification_Modeling_Gradient_Boosting.ipynb)
 
 Gradient Boosting Model was used to predict poverty status based on various features. Initially, all categorical variables were transformed into numeric variables. During this process, the 'POV_LVL' column was dropped since it represents the same concept as the target variable 'POV_STS'. Additionally, the 'GROSS_PAY' column was dropped as it is a component of the 'EARN_TOTAL' variable. Lastly, the 'ADJ_GROSS_INC' column was removed as it was highly correlated with 'EARN_TOTAL'.
 
@@ -241,7 +241,7 @@ As earlier expected, the **most important feature** in predicting the target var
 Moreover, regarding the model selection, based on the confusion matrix above, the model selection should be done based on the needs of the organization at the time since the two best-performing models have different distributions of False Negatives and False Positives. In this model evaluation, one (positive) indicates 'in poverty' and zero (negative) indicates 'not in poverty.' The Gradient Boosting Model with Data Resampling (all columns) has 7276 False Positives and 375 False Negatives, while the Gradient Boosting Model with Data Resampling (with only columns selected at the EDA process) has 7318 False Positives and 371 False Negatives. Therefore, if the goal is to minimize False Positives, the Gradient Boosting Model with Data Resampling (all columns) should be used. On the other hand, if the goal is to minimize False Negatives, the Gradient Boosting Model with Data Resampling (with only columns selected at the EDA process) should be used. This goal will differ based on the program that the organization/government is considering. For example, if the funding is very limited, the goal might be to help only people in need, prioritizing False Positives. Conversely, for other programs with larger funding, the goal might be to assist as many people as possible, making False Negatives a more significant issue.
 
 
-### 4. [Random Forest Modeling](../code/04_Classification_Modeling_Random_Forest.ipynb)
+### 4. [Random Forest Modeling](./code/04_Classification_Modeling_Random_Forest.ipynb)
 
 In this notebook, two models were used: a Random Forest model and a Random Forest model with resampling. First, data was prepared by getting rid of unnecessary information and splitting it into training and test sets. Random Forest model was trained on the training data and was evaluated on how well it made predictions on the test data. Metrics like accuracy and F1 score were used to see how accurate the model was. A confusion matrix was made to get a visual representation of the predictions.
 
@@ -257,7 +257,7 @@ By comparing the results of both models, it became evident how resampling can ma
 The analysis of the best performing model revealed that age was the most influential feature in predicting poverty. This finding aligns with our understanding that younger individuals who may not have established financial stability are more susceptible to poverty. Furthermore, older individuals facing increased financial burdens due to healthcare and other factors also face a higher risk of poverty. Adjusted Gross Income and Out-of-Pocket Outpatient Care were identified as the next significant features contributing to the model's predictive power. These findings emphasize the importance of considering age and financial factors, such as income and healthcare expenses, when addressing poverty-related issues.
 
 
-### 5. [Clustering](../code/05_Clustering.ipynb)
+### 5. [Clustering](./code/05_Clustering.ipynb)
 
 Coming Soon.
 
@@ -267,7 +267,9 @@ Coming Soon.
 |-------|------------------|-----------|
 |Logistic Regression| 0.547|0.171|
 |Logistic Regression with pipeline (no penalty)|0.547|0.173|
+| GBM W/ Data resampling (all columns) | 0.569 | 0.238 |
 | GBM W/ Data resampling (all columns) | 0.787 | 0.326 |
+| GBM W/ Data Resampling (with only columns selected at EDA process) | 0.570 | 0.239 |
 | GBM W/ Data Resampling (with only columns selected at EDA process) | 0.787 | 0.325 |
 |Random Forest| 0.765|0.613|
 |Random Forest w/ Resampling|0.815|0.631
